@@ -44,37 +44,35 @@ After working through the notebooks, participants should be able to:
 
 ---
 
-## Dataset
+## Data
 
-The notebooks expect a CSV file named:
+The ozone dataset used in this session is available from Zenodo:
 
-```text
-DATA/2023_clean.csv
-```
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17502917.svg)](https://doi.org/10.5281/zenodo.17502917)
 
-The main target variable is:
+**Dataset:** High-resolution (1 km) daily surface MDA8 ozone dataset over the Continental USA, 2003–2024  
+**Source:** https://zenodo.org/records/17502917  
+**DOI:** https://doi.org/10.5281/zenodo.17502917
 
-```text
-epa_o3
-```
+The full dataset is large and is organized by year as ZIP files. For the hands-on notebooks, download only the required year(s) or the prepared training table used in the session.
 
-The current demo uses the following predictors:
+A recommended local directory structure is:
 
 ```text
-latitude, longitude,
-aster_dem,
-cams_col_o3, cams_surf_o3, cams_surf_no2, cams_surf_hcho,
-ceres_swf_all,
-era5_blh, era5_t2m, era5_u10, era5_v10, era5_t2m-d2m,
-modis_landtype,
-water_fraction, modis_ndvi,
-pop, viirs_ntl,
-doy, year
-```
-
-`modis_landtype` is treated as a categorical feature and is one-hot encoded. The other predictors are treated as continuous numerical features.
-
-The data file may be omitted from the GitHub repository if it is too large or contains restricted data. In that case, place `2023_clean.csv` under `DATA/` before running the notebooks.
+satmoc-2026-session-IV/
+├── data/
+│   ├── raw/
+│   │   ├── 2020.zip
+│   │   └── 2021.zip
+│   └── processed/
+│       └── ozone_training_data.csv
+├── satmoc2026_ML_Random_Forest.ipynb
+├── satmoc2026_ML_XGBoost.ipynb
+├── satmoc2026_ML_LightGBM.ipynb
+├── satmoc2026_ML_MLP.ipynb
+├── datasets.py
+├── model.py
+└── train.py
 
 ---
 
@@ -170,7 +168,7 @@ Note: the notebooks use `root_mean_squared_error` from `scikit-learn`, so a rece
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/mzhou16-work/AMS-SatMOC-2026-session-IV
    cd satmoc-2026-session-IV
    ```
 
